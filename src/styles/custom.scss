@@ -1,0 +1,61 @@
+// Color
+$primary-color: #2d8cf0;
+$info-color: #2db7f5;
+$success-color: #19be6b;
+$warning-color: #f90;
+$error-color: #ed3f14;
+$link-color: #2d8cf0;
+$link-hover-color: tint($link-color, 20%);
+$link-active-color: shade($link-color, 5%);
+
+// Base
+$body-background: #fff;
+$font-family: 'Helvetica Neue', helvetica, 'Hiragino Sans GB', 'Microsoft YaHei',
+  '微软雅黑', hrial, sans-serif;
+$title-color: #1c2438;
+$text-color: #495060;
+$text-white-color: #fff;
+$text-light-color: #999;
+
+//Border
+$border-base-color: #dddee1;
+$border-base-hover: #c6e2ff;
+$border-inner-color: #e9eaec;
+
+//Button
+$btn-base-color: #fff;
+$btn-base-background: #ecf5ff;
+$btn-primary-color: #409eff;
+$btn-primary-hover: #66b1ff;
+$btn-primary-active: #3a8ee6;
+$btn-success-color: #67c23a;
+$btn-success-hover: #85ce61;
+$btn-warning-color: #eb9e05;
+$btn-warning-hover: #efb137;
+$btn-danger-color: #fa5555;
+$btn-danger-hover: #fb7777;
+$btn-info-color: #878d99;
+$btn-info-hover: #9fa4ad;
+
+//Input
+$input-disabled-background: #f5f7fa;
+$input-disabled-text: #b4bccc;
+$input-disabled-border: #dfe4ed;
+
+//Option
+
+$option-base-color: #fff;
+$option-base-hover: #f3f3f3;
+
+//Table
+$table-background-hover:#f3f6fb;
+
+//Box-Shadow
+$box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+
+//layout
+$head-background-color: #143f6d;
+$side-background-color: #0d5477;
+$side-checked-color: #20a8d8;
+$main-background-color: #eff0f4;
+$mask-background: rgba(55, 55, 55, 0.6);
