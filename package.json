@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run start:example",
     "start:example": "webpack-dev-server --color --config webpack.example.config.js",
-    "start:doc": "webpack-dev-server --color --config webpack.doc.config.js"
+    "start:doc": "webpack-dev-server --color --config webpack.doc.config.js",
+    "create":"node bin/build.js"
   },
   "author": "lihaoliang2006@126.com",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "eslint": "^3.10.2",
     "extract-text-webpack-plugin": "^3.0.1",
     "file-loader": "^1.1.5",
+    "handlebars": "^4.0.11",
     "highlight.js": "^9.11.0",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",

@@ -26,7 +26,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: [resolve('../src')]
+        include: [resolve('./examples')]
       },
       {
         test: /\.vue$/,
