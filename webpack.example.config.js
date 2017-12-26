@@ -30,6 +30,7 @@ module.exports = {
       },
       {
         test: /\.vue$/,
+        exclude:path.resolve(__dirname, 'packages/cptTemp'),
         use: {
           loader: 'vue-loader',
           options: {
@@ -48,6 +49,10 @@ module.exports = {
             }
           }
         }
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
