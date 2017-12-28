@@ -1,1 +1,5 @@
-{"components":[{"name":"button","title":"button"}]}
+{
+  "components": [
+		{ "name": "button", "title": "button", "tag": "u-button" }
+	]
+}

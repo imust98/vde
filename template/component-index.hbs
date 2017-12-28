@@ -1,0 +1,30 @@
+
+{{#if list}}
+{{#each list}}
+import {{this.name}} from '../packages/{{this.name}}/index.vue';
+{{/each}}
+{{/if}}
+
+const install = function(Vue, config = {}) {
+  {{#if list}}
+  {{#each list}}
+  Vue.component({{this.name}}.name, {{this.name}});
+  {{/each}}
+  {{/if}}
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+export {
+  {{#if list}}
+  {{#each list}}
+  {{#if @last}}
+  {{this.name}}
+  {{else}}
+  {{this.name}},
+  {{/if}}
+  {{/each}}
+  {{/if}}
+};

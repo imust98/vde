@@ -2,7 +2,7 @@
   "name": "vee",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "npm run start:example",
     "start:example": "webpack-dev-server --color --config webpack.example.config.js",
