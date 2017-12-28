@@ -21,8 +21,8 @@ module.exports = {
       rules: [
         {
           test: /\.js$/,
-          use: 'babel-loader',
-          include: [resolve('./docs')]
+					use: 'babel-loader',
+					include: [resolve('../docs'), resolve('../examples')]
         },
         {
           test: /\.vue$/,
