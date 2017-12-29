@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imust98/vde.git"
+  },
   "scripts": {
     "start": "npm run start:example",
     "start:example": "webpack-dev-server --color --config build/webpack.example.conf.js",
