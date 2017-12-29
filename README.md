@@ -1,10 +1,17 @@
 
-> 一个vue组件工程化自动生成文档、组件示例的脚手架
+> Component engineering automatically generates scaffolding for documentation, component examples
 
 ## vee
 ---
-### 快速使用
-1、全局安装
+### Installation
+
+``` bash
+$ npm install
 ```
-npm install -g vde
+
+### Usage
+
+``` bash
+$ npm run start
 ```
+

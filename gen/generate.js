@@ -18,7 +18,7 @@ const compileTemplate = str => {
 };
 const compileJs = str => {
 	let template = Handlebars.compile(str);
-	let _str = fs.readFileSync('./bin/route.json', 'utf-8');
+	let _str = fs.readFileSync('./gen/route.json', 'utf-8');
   let _config = JSON.parse(_str);
   let list = _config.components || [];
   let source = template({
@@ -78,11 +78,11 @@ const autoUpdateFiles = () => {
  * @param {*} title
  */
 const storageComponentConfig = (conName, title) => {
-  let str = fs.readFileSync('./bin/route.json', 'utf-8');
+  let str = fs.readFileSync('./gen/route.json', 'utf-8');
   let _config = JSON.parse(str);
   _config.components.push({ name: conName, title: title });
   let _str = JSON.stringify(_config);
-  fs.writeFileSync('./bin/route.json', _str);
+  fs.writeFileSync('./gen/route.json', _str);
 };
 
 
