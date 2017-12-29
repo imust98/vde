@@ -1,4 +1,4 @@
-import config from '../bin/route.json';
+import config from '../gen/route.json';
 const nav = config.components.map(item => {
   const comp = require('../packages/' + item.name + '/example.vue').default;
   return {
