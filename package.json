@@ -17,7 +17,7 @@
     "component"
   ],
   "scripts": {
-    "start": "npm run start",
+    "start": "npm run start:example | npm run start:doc",
     "start:example": "webpack-dev-server --color --config build/webpack.example.conf.js",
     "start:doc": "webpack-dev-server --color --config build/webpack.doc.conf.js",
     "build:doc":"webpack --config build/webpack.doc.prod.conf.js",
