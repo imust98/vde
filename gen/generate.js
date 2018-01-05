@@ -6,24 +6,27 @@ const exists = require('fs').existsSync;
 const basepath = 'packages/';
 const config = require('../config.json');
 const params = process.argv;
-const componentName = params[2] || 'test';
-const title = params[3] || '';
-const targetDir = path.resolve(path.join(basepath, componentName));
+const compName = params[2] || 'test'; //component name
+const title = params[3] || 'test'; //component tile,used for project nav
+const targetDir = path.resolve(path.join(basepath, compName));
 const sourceTemplateDir = path.resolve('template/component');
 
-const calculatePath = (from,to) => {
-  let _path = path.relative(from,to);
-  if(!_path) {
-    return ''
+const calculatePath = (from, to) => {
+  let _path = path.relative(from, to);
+  if (!_path) {
+    return '';
   }
-  return _path + "/";
-}
-const exampleRelativeMainPath = calculatePath(config.path.example.replace(/\*/g, componentName),config.path.main.replace(/\*/g, componentName));
-const compileTemplate = (str,filesPath) => { 
+  return _path + '/';
+};
+const exampleRelativeMainPath = calculatePath(
+  config.path.example.replace(/\*/g, compName),
+  config.path.main.replace(/\*/g, compName)
+);
+const compileTemplate = (str, filesPath) => {
   let template = Handlebars.compile(str);
   let source = template({
-    ComponentName: componentName,
-    relativePath:exampleRelativeMainPath
+    ComponentName: compName,
+    relativePath: exampleRelativeMainPath
   });
   return source;
 };
@@ -65,31 +68,44 @@ const copydir = (src, dist, callback) => {
     const filesPath = {};
     if (error) {
       throw error;
-    } else {
-      files.forEach(item => {
-        let _src = path.resolve(path.join(src, item));
-        let _dist = '';
-        if (item === 'index.vue') {
-          filesPath.main = path.join(componentName,config.path.main.replace(/\*/g, componentName),'./');
-          _dist = path.join(dist,config.path.main.replace(/\*/g, componentName),'./');
-          _dist = path.resolve(path.join(_dist,item));
-        } else if (item === 'example.vue') {
-          filesPath.example = path.join(componentName,config.path.example.replace(/\*/g, componentName),'./');          
-          _dist = path.join(dist,config.path.example.replace(/\*/g, componentName),'./');
-          _dist = path.resolve(path.join(_dist,item));
-        } else {
-          filesPath.readme = path.join(componentName,config.path.readme.replace(/\*/g, componentName),'./');          
-          _dist= path.join(dist,config.path.readme.replace(/\*/g, componentName),'./');
-          _dist = path.resolve(path.join(_dist,item));
-        }
-        let _str = compileTemplate(fs.readFileSync(_src, 'utf-8'),filesPath);
-        fsPath.writeFileSync(_dist, _str);
-        if (++fileCounter === totalFiles) {
-          callback(filesPath);
-          console.log(filesPath);
-        }
-      });
+      return;
     }
+    const writeFilesPath = fileName => {
+      filesPath[fileName] = path.join(
+        compName,
+        config.path[fileName].replace(/\*/g, compName),
+        './'
+      );
+    };
+    const getDistDir = (fileName,item) => {
+      let _dist = path.join(
+        dist,
+        config.path[fileName].replace(/\*/g, compName),
+        './'
+      );
+      _dist = path.resolve(path.join(_dist, item));
+      return _dist;
+    };
+    files.forEach(item => {
+      let _src = path.resolve(path.join(src, item));
+      let _dist = '';
+      const processArr = ['index.vue', 'example.vue', 'readme.md'];
+      if (processArr.includes(item)) {
+        let resName = '';
+        if (item === 'index.vue') {
+          resName = 'main';
+        } else {
+          resName = item.match(/(.*?)\./)[1];
+        }
+        writeFilesPath(resName);
+        _dist = getDistDir(resName,item);
+      }
+      let _str = compileTemplate(fs.readFileSync(_src, 'utf-8'), filesPath);
+      fsPath.writeFileSync(_dist, _str);
+      if (++fileCounter === totalFiles) {
+        callback(filesPath);
+      }
+    });
   });
 };
 
@@ -120,12 +136,12 @@ const storageComponentConfig = (conName, title, filesPath) => {
 };
 
 if (exists(targetDir)) {
-  console.log(componentName + ' component already existed');
+  console.log(compName + ' component already existed');
 } else {
   fs.mkdirSync(targetDir);
   copydir(sourceTemplateDir, targetDir, function(filesPath) {
-    console.log(componentName + ' create success');
-    storageComponentConfig(componentName, title, filesPath);
+    console.log(compName + ' create success');
+    storageComponentConfig(compName, title, filesPath);
     autoUpdateFiles(filesPath);
   });
 }
