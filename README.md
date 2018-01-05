@@ -1,7 +1,7 @@
 
 > Component engineering automatically generates scaffolding for documentation, component examples
 
-## vee
+## vde
 ---
 ### Installation
 
@@ -13,5 +13,8 @@ $ npm install
 
 ``` bash
 $ npm run start
+```
+``` bash
+$ npm run generate <componentName>
 ```
 

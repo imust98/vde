@@ -4,7 +4,7 @@ const nav = config.components.map(item => {
     path: '/' + item.name,
     name: item.name,
     component: resolve =>
-      require(['../packages/' + item.name + '/readme.md'], resolve),
+      require(['../packages/' + item.path.readme + 'readme.md'], resolve),
     meta: {
       title: item.title
     }

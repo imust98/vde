@@ -5,7 +5,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import {{ComponentName}} from './index.vue';
+import {{ComponentName}} from './{{relativePath}}index.vue';
 export default {
   components: {
     {{ComponentName}}: {{ComponentName}}

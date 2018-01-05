@@ -1,7 +1,7 @@
 
 {{#if list}}
 {{#each list}}
-import {{this.name}} from '../packages/{{this.name}}/index.vue';
+import {{this.name}} from '../packages/{{this.path.main}}index.vue';
 {{/each}}
 {{/if}}
 
