@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 import routes from './nav.js';
 const router = new VueRouter({ mode: 'history', routes });
-const originalTitle = '组件库';
+const originalTitle = '组件例子';
 router.afterEach(route => {
   document.title = route.meta.title
     ? `${route.meta.title} - ${originalTitle}`
